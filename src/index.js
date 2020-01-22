@@ -1,12 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import './index.scss';
+import Dictionary from "./Dictionary";
+import AddNewRecord from "./AddNewRecord";
+import Alert from "./Alert"
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class Main extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1><i className="fas fa-book-open"></i> Dictionary Management System</h1>
+                <div className="card">
+                    <div  className="content">
+                        <Dictionary/>
+                        <button id="addRecord"><i className="fas fa-plus"></i> Add New Record</button>
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+                        <AddNewRecord/>
+                        <Alert type="success"/>
+                        <Alert type="notice"/>
+                        <Alert type="warning"/>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+}
+
+ReactDOM.render(<Main/>, document.getElementById('root'));

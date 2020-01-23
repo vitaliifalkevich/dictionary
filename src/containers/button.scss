@@ -1,12 +1,12 @@
-@import "sass/params";
-@import "sass/mixins";
+@import "../sass/params";
+@import "../sass/mixins";
 
 .edit {
   background-color: $yellow;
   text-align: center;
   transition: all .3s;
   i {
-    transition: all .3s;
+    transition: transform .3s;
   }
   &:hover {
     @include hoverButton;
@@ -27,6 +27,21 @@
   &:hover {
     @include hoverButton;
     background-color: darken($red,20%);
+    i {
+      transform: scale(1.07);
+    }
+  }
+}
+.apply {
+  background-color: $green;
+  text-align: center;
+  transition: all .3s;
+  i {
+    transition: transform .3s;
+  }
+  &:hover {
+    @include hoverButton;
+    background-color: darken($green,10%);
     i {
       transform: scale(1.07);
     }

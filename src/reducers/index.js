@@ -4,8 +4,8 @@ const initialState = [
         range: "Dark Grey"
     },
     {
-        domain: "test",
-        range: "test2"
+        domain: "Midnight Black",
+        range: "Black"
     }
 ];
 
@@ -23,8 +23,6 @@ const rootReducer = (state = initialState, action) => {
 
 
         case 'EDIT_RECORD':
-           /* console.log(action.id, action.domain, action.range);*/
-
             return state.map((item, idx) =>
                 (idx === action.id)
                     ? {...item,
@@ -32,17 +30,6 @@ const rootReducer = (state = initialState, action) => {
                     range: action.range}
                     : item
             );
-
-
-
-
-            /*return [
-                ...state,
-                {
-                    domain: action.domain,
-                    range: action.range
-                }
-            ];*/
 
         case 'REMOVE_RECORD':
             return state.filter((_, i) => i !== action.id);

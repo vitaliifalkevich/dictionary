@@ -2,27 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import rootReducer from "./reducers";
-import {addRecord} from "./actions";
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import Dictionary from "./components/Dictionary";
 import AddNewRecord from "./containers/AddNewRecord";
-import Alert from "./components/Alert"
+import {dataCheck} from "./middleware"
 
-const store = createStore(rootReducer);
-
-console.log(store.getState());
-
-
-store.dispatch(addRecord('Midnight Black', 'Black'));
-
-
-/*store.dispatch(addRecord('EDIT_RECORD', {id: 2, domain: 'edit', range: 'edit2'}));*/
-
-console.log(store.getState());
-
+const store = createStore(rootReducer, applyMiddleware(dataCheck));
 
 class Main extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {visible: false};
+    }
+
+    addNewRecordVisible = () => {
+        this.setState({visible: true});
+    };
+
     render() {
         return (
             <div>
@@ -31,12 +28,14 @@ class Main extends React.Component {
                     <div className="content">
                         <Provider store={store}>
                             <Dictionary/>
-                            <button id="addRecord"><i className="fas fa-plus"></i> Add New Record</button>
-                            <AddNewRecord/>
-                            <Alert type="success"/>
-                            <Alert type="notice"/>
-                            <Alert type="warning"/>
+                            {!this.state.visible ?  <button onClick={this.addNewRecordVisible} id="addRecord"><i className="fas fa-plus"></i> Add
+                                New Record
+                            </button> : ''}
+                            {this.state.visible ?  <AddNewRecord/> : ''}
                         </Provider>
+                        <div id="message">
+
+                        </div>
                     </div>
                 </div>
             </div>

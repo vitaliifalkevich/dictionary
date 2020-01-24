@@ -1,8 +1,7 @@
 import React from 'react';
 import './button.scss';
 import {connect} from 'react-redux'
-import {addRecord, removeRecord, editRecord} from "../actions";
-import {bindActionCreators} from "redux";
+import {removeRecord, editRecord} from "../actions";
 
 
 class Button extends React.Component{
@@ -15,6 +14,8 @@ class Button extends React.Component{
                 return this.editRecordDOM();
             case 'apply':
                 return this.applyRecordDOM();
+            default:
+                return ''
         }
 
     };

@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {bindActionCreators} from "redux";
 import Button from "./Button";
 import Input from "../components/Input"
 
@@ -15,7 +14,6 @@ class DictionaryList extends React.Component {
     };
 
     showList() {
-        console.log(this.state.idx);
 
         if (this.props.records.length > 0) {
             return this.props.records.map((record, idx) => {

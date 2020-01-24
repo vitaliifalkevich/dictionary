@@ -7,8 +7,7 @@ import { addRecord } from "../actions";
 
 const AddNewRecord = ({dispatch}) => {
     return (
-        <>
-            <hr/>
+        <div className='addNewRecordContainer'>
             <h2>Add a new dictionary record bellow</h2>
             <form onSubmit={e => {
                 e.preventDefault();
@@ -29,7 +28,7 @@ const AddNewRecord = ({dispatch}) => {
                 </div>
                 <br/>
             </form>
-        </>
+        </div>
 
     )
 };
